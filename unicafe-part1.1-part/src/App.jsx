@@ -13,20 +13,36 @@ const Statisitcs = ({ good, neutral, bad }) => {
     return (
       <>
         <h2>statistics</h2>
-        <p>good {good}</p>
-        <p>neutral {neutral}</p>
-        <p>bad {bad}</p>
-        <p>all {total}</p>
-        <p>average {avg()}</p>
-        <p>positive {positive} %</p>
+        <StatisticLine text="good" value={good} />
+        <StatisticLine text="neutral" value={neutral} />
+        <StatisticLine text="bad" value={bad} />
+        <StatisticLine text="all" value={total} />
+        <StatisticLine text="average" value={avg()} />
+        <StatisticLine text="positive" value={positive} />
       </>
     );
-  } 
+  }
   return (
     <>
-    <p>No feedback given</p>
+      <p>No feedback given</p>
     </>
-  )
+  );
+};
+
+const StatisticLine = ({ text, value }) => {
+  return (
+    <>
+      {text === "positive" ? (
+        <p>
+          {text} {value} %
+        </p>
+      ) : (
+        <p>
+          {text} {value}
+        </p>
+      )}
+    </>
+  );
 };
 
 function App() {
